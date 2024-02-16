@@ -2,495 +2,199 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const Card = ({ batchId }) => {
-  const Batch1 = [
+const Card = ({ productId }) => {
+  const product1 = [
     {
       id: 1,
-      name: "Leanne Graham",
+      name: "Innis Free Face wash 25 gm",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "success",
       username: "Bret",
       email: "Sincere@april.biz",
-      address: {
-        street: "Kulas Light",
-        suite: "Apt. 556",
-        city: "Gwenborough",
-        zipcode: "92998-3874",
-        geo: {
-          lat: "-37.3159",
-          lng: "81.1496",
-        },
-      },
-      phone: "1-770-736-8031 x56442",
-      website: "hildegard.org",
-      company: {
-        name: "Romaguera-Crona",
-        catchPhrase: "Multi-layered client-server neural-net",
-        bs: "harness real-time e-markets",
-      },
     },
     {
       id: 2,
       name: "Ervin Howell",
       username: "Antonette",
       email: "Shanna@melissa.tv",
-      address: {
-        street: "Victor Plains",
-        suite: "Suite 879",
-        city: "Wisokyburgh",
-        zipcode: "90566-7771",
-        geo: {
-          lat: "-43.9509",
-          lng: "-34.4618",
-        },
-      },
-      phone: "010-692-6593 x09125",
-      website: "anastasia.net",
-      company: {
-        name: "Deckow-Crist",
-        catchPhrase: "Proactive didactic contingency",
-        bs: "synergize scalable supply-chains",
-      },
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
       id: 3,
       name: "Clementine Bauch",
       username: "Samantha",
       email: "Nathan@yesenia.net",
-      address: {
-        street: "Douglas Extension",
-        suite: "Suite 847",
-        city: "McKenziehaven",
-        zipcode: "59590-4157",
-        geo: {
-          lat: "-68.6102",
-          lng: "-47.0653",
-        },
-      },
-      phone: "1-463-123-4447",
-      website: "ramiro.info",
-      company: {
-        name: "Romaguera-Jacobson",
-        catchPhrase: "Face to face bifurcated interface",
-        bs: "e-enable strategic applications",
-      },
-    },
-    {
-      id: 4,
-      name: "Patricia Lebsack",
-      username: "Karianne",
-      email: "Julianne.OConner@kory.org",
-      address: {
-        street: "Hoeger Mall",
-        suite: "Apt. 692",
-        city: "South Elvis",
-        zipcode: "53919-4257",
-        geo: {
-          lat: "29.4572",
-          lng: "-164.2990",
-        },
-      },
-      phone: "493-170-9623 x156",
-      website: "kale.biz",
-      company: {
-        name: "Robel-Corkery",
-        catchPhrase: "Multi-tiered zero tolerance productivity",
-        bs: "transition cutting-edge web services",
-      },
-    },
-  ];
-  const Batch2 = [
-    {
-      id: 1,
-      name: "Mrs. Dennis Schulist",
-      username: "Leopoldo_Corkery",
-      email: "Karley_Dach@jasper.info",
-      address: {
-        street: "Norberto Crossing",
-        suite: "Apt. 950",
-        city: "South Christy",
-        zipcode: "23505-1337",
-        geo: {
-          lat: "-71.4197",
-          lng: "71.7478",
-        },
-      },
-      phone: "1-477-935-8478 x6430",
-      website: "ola.org",
-      company: {
-        name: "Considine-Lockman",
-        catchPhrase: "Synchronised bottom-line interface",
-        bs: "e-enable innovative applications",
-      },
-    },
-    {
-      id: 2,
-      name: "Kurtis Weissnat",
-      username: "Elwyn.Skiles",
-      email: "Telly.Hoeger@billy.biz",
-      address: {
-        street: "Rex Trail",
-        suite: "Suite 280",
-        city: "Howemouth",
-        zipcode: "58804-1099",
-        geo: {
-          lat: "24.8918",
-          lng: "21.8984",
-        },
-      },
-      phone: "210.067.6132",
-      website: "elvis.io",
-      company: {
-        name: "Johns Group",
-        catchPhrase: "Configurable multimedia task-force",
-        bs: "generate enterprise e-tailers",
-      },
-    },
-    {
-      id: 3,
-      name: "Nicholas Runolfsdottir V",
-      username: "Maxime_Nienow",
-      email: "Sherwood@rosamond.me",
-      address: {
-        street: "Ellsworth Summit",
-        suite: "Suite 729",
-        city: "Aliyaview",
-        zipcode: "45169",
-        geo: {
-          lat: "-14.3990",
-          lng: "-120.7677",
-        },
-      },
-      phone: "586.493.6943 x140",
-      website: "jacynthe.com",
-      company: {
-        name: "Abernathy Group",
-        catchPhrase: "Implemented secondary concept",
-        bs: "e-enable extensible e-tailers",
-      },
-    },
-    {
-      id: 4,
-      name: "Glenna Reichert",
-      username: "Delphine",
-      email: "Chaim_McDermott@dana.io",
-      address: {
-        street: "Dayna Park",
-        suite: "Suite 449",
-        city: "Bartholomebury",
-        zipcode: "76495-3109",
-        geo: {
-          lat: "24.6463",
-          lng: "-168.8889",
-        },
-      },
-      phone: "(775)976-6794 x41206",
-      website: "conrad.com",
-      company: {
-        name: "Yost and Sons",
-        catchPhrase: "Switchable contextually-based project",
-        bs: "aggregate real-time technologies",
-      },
-    },
-    {
-      id: 5,
-      name: "Clementina DuBuque",
-      username: "Moriah.Stanton",
-      email: "Rey.Padberg@karina.biz",
-      address: {
-        street: "Kattie Turnpike",
-        suite: "Suite 198",
-        city: "Lebsackbury",
-        zipcode: "31428-2261",
-        geo: {
-          lat: "-38.2386",
-          lng: "57.2232",
-        },
-      },
-      phone: "024-648-3804",
-      website: "ambrose.net",
-      company: {
-        name: "Hoeger LLC",
-        catchPhrase: "Centralized empowering task-force",
-        bs: "target end-to-end models",
-      },
-    },
-  ];
-  const Batch3 = [
-    {
-      id: 1,
-      name: "Leanne Graham",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
       username: "Bret",
       email: "Sincere@april.biz",
-      address: {
-        street: "Kulas Light",
-        suite: "Apt. 556",
-        city: "Gwenborough",
-        zipcode: "92998-3874",
-        geo: {
-          lat: "-37.3159",
-          lng: "81.1496",
-        },
-      },
-      phone: "1-770-736-8031 x56442",
-      website: "hildegard.org",
-      company: {
-        name: "Romaguera-Crona",
-        catchPhrase: "Multi-layered client-server neural-net",
-        bs: "harness real-time e-markets",
-      },
+    },
+  ];
+  const product2 = [
+    {
+      id: 1,
+      name: "Innis Free Face wash 25 gm",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
       id: 2,
       name: "Ervin Howell",
       username: "Antonette",
       email: "Shanna@melissa.tv",
-      address: {
-        street: "Victor Plains",
-        suite: "Suite 879",
-        city: "Wisokyburgh",
-        zipcode: "90566-7771",
-        geo: {
-          lat: "-43.9509",
-          lng: "-34.4618",
-        },
-      },
-      phone: "010-692-6593 x09125",
-      website: "anastasia.net",
-      company: {
-        name: "Deckow-Crist",
-        catchPhrase: "Proactive didactic contingency",
-        bs: "synergize scalable supply-chains",
-      },
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
       id: 3,
       name: "Clementine Bauch",
       username: "Samantha",
       email: "Nathan@yesenia.net",
-      address: {
-        street: "Douglas Extension",
-        suite: "Suite 847",
-        city: "McKenziehaven",
-        zipcode: "59590-4157",
-        geo: {
-          lat: "-68.6102",
-          lng: "-47.0653",
-        },
-      },
-      phone: "1-463-123-4447",
-      website: "ramiro.info",
-      company: {
-        name: "Romaguera-Jacobson",
-        catchPhrase: "Face to face bifurcated interface",
-        bs: "e-enable strategic applications",
-      },
-    },
-    {
-      id: 4,
-      name: "Glenna Reichert",
-      username: "Delphine",
-      email: "Chaim_McDermott@dana.io",
-      address: {
-        street: "Dayna Park",
-        suite: "Suite 449",
-        city: "Bartholomebury",
-        zipcode: "76495-3109",
-        geo: {
-          lat: "24.6463",
-          lng: "-168.8889",
-        },
-      },
-      phone: "(775)976-6794 x41206",
-      website: "conrad.com",
-      company: {
-        name: "Yost and Sons",
-        catchPhrase: "Switchable contextually-based project",
-        bs: "aggregate real-time technologies",
-      },
-    },
-    {
-      id: 5,
-      name: "Clementina DuBuque",
-      username: "Moriah.Stanton",
-      email: "Rey.Padberg@karina.biz",
-      address: {
-        street: "Kattie Turnpike",
-        suite: "Suite 198",
-        city: "Lebsackbury",
-        zipcode: "31428-2261",
-        geo: {
-          lat: "-38.2386",
-          lng: "57.2232",
-        },
-      },
-      phone: "024-648-3804",
-      website: "ambrose.net",
-      company: {
-        name: "Hoeger LLC",
-        catchPhrase: "Centralized empowering task-force",
-        bs: "target end-to-end models",
-      },
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
   ];
-  const Batch4 = [
+  const product3 = [
     {
       id: 1,
-      name: "Mrs. Dennis Schulist",
-      username: "Leopoldo_Corkery",
-      email: "Karley_Dach@jasper.info",
-      address: {
-        street: "Norberto Crossing",
-        suite: "Apt. 950",
-        city: "South Christy",
-        zipcode: "23505-1337",
-        geo: {
-          lat: "-71.4197",
-          lng: "71.7478",
-        },
-      },
-      phone: "1-477-935-8478 x6430",
-      website: "ola.org",
-      company: {
-        name: "Considine-Lockman",
-        catchPhrase: "Synchronised bottom-line interface",
-        bs: "e-enable innovative applications",
-      },
+      name: "Innis Free Face wash 25 gm",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
       id: 2,
-      name: "Kurtis Weissnat",
-      username: "Elwyn.Skiles",
-      email: "Telly.Hoeger@billy.biz",
-      address: {
-        street: "Rex Trail",
-        suite: "Suite 280",
-        city: "Howemouth",
-        zipcode: "58804-1099",
-        geo: {
-          lat: "24.8918",
-          lng: "21.8984",
-        },
-      },
-      phone: "210.067.6132",
-      website: "elvis.io",
-      company: {
-        name: "Johns Group",
-        catchPhrase: "Configurable multimedia task-force",
-        bs: "generate enterprise e-tailers",
-      },
+      name: "Ervin Howell",
+      username: "Antonette",
+      email: "Shanna@melissa.tv",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
       id: 3,
-      name: "Nicholas Runolfsdottir V",
-      username: "Maxime_Nienow",
-      email: "Sherwood@rosamond.me",
-      address: {
-        street: "Ellsworth Summit",
-        suite: "Suite 729",
-        city: "Aliyaview",
-        zipcode: "45169",
-        geo: {
-          lat: "-14.3990",
-          lng: "-120.7677",
-        },
-      },
-      phone: "586.493.6943 x140",
-      website: "jacynthe.com",
-      company: {
-        name: "Abernathy Group",
-        catchPhrase: "Implemented secondary concept",
-        bs: "e-enable extensible e-tailers",
-      },
+      name: "Clementine Bauch",
+      username: "Samantha",
+      email: "Nathan@yesenia.net",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "success",
+      username: "Bret",
+      email: "Sincere@april.biz",
+    },
+  ];
+  const product4 = [
+    {
+      id: 1,
+      name: "Innis Free Face wash 25 gm",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
-      id: 4,
-      name: "Glenna Reichert",
-      username: "Delphine",
-      email: "Chaim_McDermott@dana.io",
-      address: {
-        street: "Dayna Park",
-        suite: "Suite 449",
-        city: "Bartholomebury",
-        zipcode: "76495-3109",
-        geo: {
-          lat: "24.6463",
-          lng: "-168.8889",
-        },
-      },
-      phone: "(775)976-6794 x41206",
-      website: "conrad.com",
-      company: {
-        name: "Yost and Sons",
-        catchPhrase: "Switchable contextually-based project",
-        bs: "aggregate real-time technologies",
-      },
+      id: 2,
+      name: "Ervin Howell",
+      username: "Antonette",
+      email: "Shanna@melissa.tv",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "success",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
     {
-      id: 5,
-      name: "Clementina DuBuque",
-      username: "Moriah.Stanton",
-      email: "Rey.Padberg@karina.biz",
-      address: {
-        street: "Kattie Turnpike",
-        suite: "Suite 198",
-        city: "Lebsackbury",
-        zipcode: "31428-2261",
-        geo: {
-          lat: "-38.2386",
-          lng: "57.2232",
-        },
-      },
-      phone: "024-648-3804",
-      website: "ambrose.net",
-      company: {
-        name: "Hoeger LLC",
-        catchPhrase: "Centralized empowering task-force",
-        bs: "target end-to-end models",
-      },
+      id: 3,
+      name: "Clementine Bauch",
+      username: "Samantha",
+      email: "Nathan@yesenia.net",
+      category: "Beauty",
+      price: "$30.99",
+      imageSrc: "/product_images/innisfree_facewash.jpg",
+      status: "pending",
+      username: "Bret",
+      email: "Sincere@april.biz",
     },
   ];
 
-  const [batch, setBatch] = useState([]);
-
-  const { id } = useParams();
+  const [product, setproduct] = useState([]);
 
   useEffect(() => {
-    if (batchId == 1) {
-      setBatch(Batch1);
-    } else if (batchId == 2) {
-      setBatch(Batch2);
-    } else if (batchId == 3) {
-      setBatch(Batch3);
-    } else if (batchId == 4) {
-      setBatch(Batch4);
+    if (productId == 1) {
+      setproduct(product1);
+    } else if (productId == 2) {
+      setproduct(product2);
+    } else if (productId == 3) {
+      setproduct(product3);
+    } else if (productId == 4) {
+      setproduct(product4);
     } else {
-      setBatch([]);
+      setproduct([]);
     }
-  }, [batchId]);
+  }, [productId]);
 
   return (
     <>
       <Wrapper className="poppins-regular">
-        <h2>Recenet Orders</h2>
+        <h2 className="heading">Recenet Orders</h2>
         <Box>
-          <StyledTable width={"100%"}>
-            <Thead>
-              <Tr>
-                <Th>Products</Th>
-                <Th>Category</Th>
-                <Th>Price</Th>
-                <Th>Status</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {batch.map((currUser, index) => (
-                <Tr key={index}>
-                  <Td data-label="User Name">{currUser.name}</Td>
-                  <Td data-label="Email">{currUser.email}</Td>
-                   <Td data-label="Phone">{currUser.phone}</Td> 
-                  <Td data-label="Website">{currUser.website}</Td>
-                </Tr>
+          <StyledTable width={"100%"} className="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Products</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {product.map((currUser, index) => (
+                <tr key={index} className="gorditas-regular ">
+                  <td data-label="User Name">{currUser.name}</td>
+                  <td data-label="Email">{currUser.category}</td>
+                  <td data-label="Phone">{currUser.price}</td>
+                  <td
+                    data-label="Website"
+                    className={
+                      currUser.status === "pending" ? "pending" : "success"
+                    }
+                  >
+                    {currUser.status}
+                  </td>
+                </tr>
               ))}
-            </Tbody>
+            </tbody>
           </StyledTable>
         </Box>
       </Wrapper>
@@ -499,10 +203,10 @@ const Card = ({ batchId }) => {
 };
 
 const Wrapper = styled.div`
-margin-top: -2rem;
-margin-left: 2rem;
-  h2{
-    text-decoration: left;
+margin-top: 1rem;
+  .heading{
+    text-align: left;
+    padding: 1rem 0;
   }
 `;
 
@@ -512,48 +216,24 @@ const Box = styled.div`
 `;
 
 const StyledTable = styled.table`
-  width: 100%;
+  width: 90%;
+  text-align: left;
   border-collapse: collapse;
-   @media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     max-width: 80%;
     font-size: 10px;
   }
-`;
-
-const Thead = styled.thead`
-  color: white;
-  background-color: black;
-`;
-
-const Th = styled.th`
-  padding: .5rem 1.5rem;
-  @media screen and (max-width: 600px) {
-    /* Adjust styles for screens with maximum width of 600px (mobile devices) */
-    padding: 0;
-    border-radius: 0;
+  .pending {
+    color: red;
   }
-`;
-const Tr=styled.tr`
-  
-`
-
-const Tbody = styled.tbody`
-  ${Tr}:nth-child(even) {
-    background-color: #f0f0f0;
+  .success {
+    color: green;
   }
-`;
-
-const Td = styled.td`
-  padding: 5px 10px;
-  @media screen and (max-width: 600px) {
-    padding: 0;
-    border-radius: 0;
-    &::before {
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+  th{
+    /* background-color: black;
+    color:white; */
   }
+
 `;
 
 export default Card;

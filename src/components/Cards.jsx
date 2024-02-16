@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
-import { MdBorderColor } from "react-icons/md";
 
 const Cards = () => {
 
-  const Batches = [
+  const productes = [
     {
       id: 1,
       title: "Total Sales",
@@ -31,64 +30,74 @@ const Cards = () => {
       visitors: "27%",
     },
   ];
-  const [selectedBatch, setSelectedBatch] = useState(null);
+  const [selectedproduct, setSelectedproduct] = useState(null);
 
   const handleClick = (id) => {
-    setSelectedBatch((prevState) => (prevState === id ? null : id));
+    setSelectedproduct((prevState) => (prevState === id ? null : id));
   };
 
   return (
     <Container className="montserrat-regular">
-      <div className="sidebar">anku</div>
-      <Wrapper>
-        {Batches.map((elem) => {
-          return (
-            <Box key={elem.id} onClick={() => handleClick(elem.id)}>
-              <div className="tit">
-                <div className="det">
-                  <div className="title">{elem.title}</div>
-                  <div className="price">{elem.price}</div>
-                  <div className="visitors">{elem.visitors} last Week</div>
+      <div className="sidebar">sidebar</div>
+      <div className="main_sec">
+        <div className="heading gorditas-regular">
+          <h2>Hello Seller</h2>
+          <h6>Today is Monday 23rd January 2024</h6>
+        </div>
+        <Wrapper>
+          {productes.map((elem) => {
+            return (
+              <Box key={elem.id} onClick={() => handleClick(elem.id)}>
+                <div className="tit">
+                  <div className="det">
+                    <div className="title">{elem.title}</div>
+                    <div className="price">{elem.price}</div>
+                    <div className="visitors">{elem.visitors} last Week</div>
+                  </div>
+                  <div className="icon">
+                    <img src={`./assets/i${elem.id}.png`} alt="img" />
+                  </div>
                 </div>
-                <div className="icon">
-                  <MdBorderColor />
-                </div>
-              </div>
-            </Box>
-          );
-        })}
-        {/* <div className="graph">
-          <div className="chart">
-            <Chart/>
-          </div>
-          <div className="pie">
-            <MyPieChart/>
-          </div>
-        </div> */}
-        {selectedBatch && <Card batchId={selectedBatch} />}
-      </Wrapper>
+              </Box>
+            );
+          })}
+        </Wrapper>
+        {selectedproduct && <Card productId={selectedproduct} />}
+      </div>
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  margin: -3rem;
+ margin-top:-2rem;
   padding: 0;
+  overflow-x: hidden;
   .sidebar {
-    width: 25%;
-    height: 100vh;
-    background-color: black;
+    width: 25% !important;
+  }
+  .main_sec {
+    width: calc(100% - 25%);
+    .heading {
+      text-align: left;
+      width: 90%;
+      margin: 0 auto;
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 `;
 
 const Wrapper = styled.div`
-  width: 75%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: space-between;
-  margin: 2rem 3rem;
+  margin: 2rem 0 0 2rem;
   .tit {
     display: flex;
     align-items: center;
@@ -99,7 +108,7 @@ const Wrapper = styled.div`
   }
   .title {
     font-size: 1.2rem;
-    color: blue;
+    color: grey;
     text-align: left;
   }
   .visitors {
@@ -108,12 +117,17 @@ const Wrapper = styled.div`
     color: orange;
   }
   .icon {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     align-self: flex-start;
+    img {
+      width: 1.7rem;
+    }
   }
   .price {
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin: .4rem 0;
+    color: green;
   }
 `;
 
@@ -121,18 +135,11 @@ const Box = styled.div`
   background-color: #f0f0f0;
   box-sizing: border-box;
   padding: 10px;
-  width: 22%;
-  height: 7rem;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+  width: 11rem;
   cursor: pointer;
-  transition: all 0.3s ease;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    transform: translateY(-5px);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   }
 `;
