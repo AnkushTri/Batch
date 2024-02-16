@@ -472,13 +472,13 @@ const Card = ({ batchId }) => {
       <Wrapper className="poppins-regular">
         <h2>Recenet Orders</h2>
         <Box>
-          <StyledTable>
+          <StyledTable width={"100%"}>
             <Thead>
               <Tr>
-                <Th data-label="User Name">User Name</Th>
-                <Th data-label="Email">Email</Th>
-                {/* <Th data-label="Phone">Phone</Th> */}
-                <Th data-label="Website">Website</Th>
+                <Th>Products</Th>
+                <Th>Category</Th>
+                <Th>Price</Th>
+                <Th>Status</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -486,7 +486,7 @@ const Card = ({ batchId }) => {
                 <Tr key={index}>
                   <Td data-label="User Name">{currUser.name}</Td>
                   <Td data-label="Email">{currUser.email}</Td>
-                  {/* <Td data-label="Phone">{currUser.phone}</Td> */}
+                   <Td data-label="Phone">{currUser.phone}</Td> 
                   <Td data-label="Website">{currUser.website}</Td>
                 </Tr>
               ))}
@@ -499,7 +499,8 @@ const Card = ({ batchId }) => {
 };
 
 const Wrapper = styled.div`
-  margin-top: 20px;
+margin-top: -2rem;
+margin-left: 2rem;
   h2{
     text-decoration: left;
   }
@@ -511,45 +512,30 @@ const Box = styled.div`
 `;
 
 const StyledTable = styled.table`
-  width: 90%;
-  border: 0.5px solid black;
-  border-radius: 10px;
-  margin: 0 auto;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  @media screen and (max-width: 600px) {
-    /* Adjust styles for screens with maximum width of 600px (mobile devices) */
+  width: 100%;
+  border-collapse: collapse;
+   @media screen and (max-width: 600px) {
     max-width: 80%;
     font-size: 10px;
   }
 `;
 
 const Thead = styled.thead`
-  border: 2px solid green;
-`;
-
-const Tr = styled.tr`
-  &:hover {
-    background-color: #f5f5f5;
-  }
+  color: white;
+  background-color: black;
 `;
 
 const Th = styled.th`
-  border: 2px solid black;
-  padding: 10px;
-  border-radius: 10px;
-
+  padding: .5rem 1.5rem;
   @media screen and (max-width: 600px) {
     /* Adjust styles for screens with maximum width of 600px (mobile devices) */
     padding: 0;
     border-radius: 0;
   }
 `;
+const Tr=styled.tr`
+  
+`
 
 const Tbody = styled.tbody`
   ${Tr}:nth-child(even) {
@@ -558,14 +544,11 @@ const Tbody = styled.tbody`
 `;
 
 const Td = styled.td`
-  border: 0.5px solid black;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px 10px;
   @media screen and (max-width: 600px) {
     padding: 0;
     border-radius: 0;
     &::before {
-      /* content: attr(data-label); */
       float: left;
       font-weight: bold;
       text-transform: uppercase;

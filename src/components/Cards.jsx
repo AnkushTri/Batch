@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
@@ -39,9 +38,9 @@ const Cards = () => {
   };
 
   return (
-    <Container className="poppins-regular">
+    <Container className="montserrat-regular">
       <div className="sidebar">anku</div>
-      <Wrapper className="poppins-regular">
+      <Wrapper>
         {Batches.map((elem) => {
           return (
             <Box key={elem.id} onClick={() => handleClick(elem.id)}>
@@ -58,22 +57,30 @@ const Cards = () => {
             </Box>
           );
         })}
+        {/* <div className="graph">
+          <div className="chart">
+            <Chart/>
+          </div>
+          <div className="pie">
+            <MyPieChart/>
+          </div>
+        </div> */}
         {selectedBatch && <Card batchId={selectedBatch} />}
       </Wrapper>
     </Container>
   );
 };
 
-const Container=styled.div`
-display: flex;
-margin: -3rem;
-padding:0;
-  .sidebar{
+const Container = styled.div`
+  display: flex;
+  margin: -3rem;
+  padding: 0;
+  .sidebar {
     width: 25%;
     height: 100vh;
     background-color: black;
   }
-`
+`;
 
 const Wrapper = styled.div`
   width: 75%;
@@ -98,7 +105,7 @@ const Wrapper = styled.div`
   .visitors {
     text-align: left;
     font-size: 0.7rem;
-    color:orange;
+    color: orange;
   }
   .icon {
     margin-top: 1rem;
