@@ -8,11 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+api
+images
 dist
 dist-ssr
 *.local
-api
-images
 
 # Editor directories and files
 .vscode/*
