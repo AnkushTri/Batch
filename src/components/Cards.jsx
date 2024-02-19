@@ -4,31 +4,48 @@ import styled from "styled-components";
 import MyPieChart from "./PieChart";
 import MyChart from "./Chart";
 const Cards = () => {
-
   const productes = [
     {
       id: 1,
-      title: "Total Sales",
-      price: "$2000",
-      visitors: "27%",
+      title: "TOTAL ORDERS",
+      quantity: 19,
     },
     {
       id: 2,
-      title: "Visitors",
-      price: "$2000",
+      title: "DELIVERED ORDERS",
+      quantity: 13,
       visitors: "27%",
     },
     {
       id: 3,
-      title: "New Orders",
-      price: "$2000",
+      title: "REVENUE",
+      quantity: "$2000",
       visitors: "27%",
     },
     {
       id: 4,
-      title: "Customers",
-      price: "$2000",
-      visitors: "27%",
+      title: "MY EARNINGS",
+      quantity: "$2000",
+    },
+    {
+      id: 5,
+      title: "TOTAL CUSTOMERS",
+      quantity: 8,
+    },
+    {
+      id: 6,
+      title: "TOTAL CUPONS",
+      quantity: 2,
+    },
+    {
+      id: 7,
+      title: "STORE",
+      quantity: 21,
+    },
+    {
+      id: 8,
+      title: "TOTAL RUNNER",
+      quantity: 6,
     },
   ];
   const [selectedproduct, setSelectedproduct] = useState(null);
@@ -41,10 +58,6 @@ const Cards = () => {
     <Container className="montserrat-regular">
       <div className="sidebar">sidebar</div>
       <div className="main_sec">
-        <div className="heading gorditas-regular">
-          <h2>Hello Seller</h2>
-          <h6>Today is Monday 23rd January 2024</h6>
-        </div>
         <Wrapper>
           {productes.map((elem) => {
             return (
@@ -52,8 +65,7 @@ const Cards = () => {
                 <div className="tit">
                   <div className="det">
                     <div className="title">{elem.title}</div>
-                    <div className="price">{elem.price}</div>
-                    <div className="visitors">{elem.visitors} last Week</div>
+                    <div className="price">{elem.quantity}</div>
                   </div>
                   <div className="icon">
                     <img src={`./assets/i${elem.id}.png`} alt="img" />
@@ -63,12 +75,14 @@ const Cards = () => {
             );
           })}
         </Wrapper>
-        {selectedproduct ?<Card productId={selectedproduct} />:
-        <div className="chart">
-<MyChart/>
-<MyPieChart/>
-        </div>
-        }
+        {selectedproduct  ? (
+          <Card Id={selectedproduct} /> 
+        ) : (
+          <div className="chart">
+            <MyChart />
+            <MyPieChart />
+          </div>
+        )}
       </div>
     </Container>
   );
@@ -76,7 +90,6 @@ const Cards = () => {
 
 const Container = styled.div`
   display: flex;
- margin-top:-2rem;
   padding: 0;
   overflow-x: hidden;
   .sidebar {
@@ -96,9 +109,9 @@ const Container = styled.div`
       }
     }
   }
-  .chart{
+  .chart {
     display: flex;
-    margin: 1rem 0;
+    margin: 2rem 1rem;
   }
 `;
 
@@ -117,9 +130,11 @@ const Wrapper = styled.div`
     }
   }
   .title {
-    font-size: 1.2rem;
-    color: grey;
+    width: 7rem;
+    font-size: 12px;
+    color: #000000;
     text-align: left;
+    font-weight: 600;
   }
   .visitors {
     text-align: left;
@@ -136,13 +151,13 @@ const Wrapper = styled.div`
   .price {
     text-align: left;
     font-size: 1.2rem;
-    margin: .4rem 0;
-    color: green;
+    margin: 0.4rem .5rem;
+    font-weight: 600;
   }
 `;
 
 const Box = styled.div`
-  background-color: #f0f0f0;
+  background-color: #fcfcfc;
   box-sizing: border-box;
   padding: 10px;
   width: 11rem;
@@ -153,6 +168,5 @@ const Box = styled.div`
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   }
 `;
-
 
 export default Cards;
