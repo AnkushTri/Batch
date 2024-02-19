@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
-
+import MyPieChart from "./PieChart";
+import MyChart from "./Chart";
 const Cards = () => {
 
   const productes = [
@@ -62,7 +63,12 @@ const Cards = () => {
             );
           })}
         </Wrapper>
-        {selectedproduct && <Card productId={selectedproduct} />}
+        {selectedproduct ?<Card productId={selectedproduct} />:
+        <div className="chart">
+<MyChart/>
+<MyPieChart/>
+        </div>
+        }
       </div>
     </Container>
   );
@@ -89,6 +95,10 @@ const Container = styled.div`
         font-size: 1rem;
       }
     }
+  }
+  .chart{
+    display: flex;
+    margin: 1rem 0;
   }
 `;
 

@@ -80,20 +80,20 @@ const options = {
 
 
 function MyChart() {
-  const chartRef = useRef(null);
+  // const chartRef = useRef(null);
 
-  useEffect(() => {
-    // Ensure the previous instance of the chart is destroyed when the component unmounts
-    return () => {
-      if (chartRef.current) {
-        chartRef.current.chartInstance.destroy();
-      }
-    };
-  },[]);
+  // useEffect(() => {
+  //   // Ensure the previous instance of the chart is destroyed when the component unmounts
+  //   return () => {
+  //     if (chartRef.current) {
+  //       chartRef.current.chartInstance.destroy();
+  //     }
+  //   };
+  // },[]);
 
   return (
     <Wrapper>
-      <Line ref={chartRef} data={data} options={options} />
+      <Line  data={data} options={options} />
     </Wrapper>
   );
 }
