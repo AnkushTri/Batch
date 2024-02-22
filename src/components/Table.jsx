@@ -9,9 +9,8 @@ const Table = ({ data,heading }) => {
   return (
     <Wrapper className="poppins-regular">
       <h2 className="heading">{heading}</h2>
-      <Box>
+      <Box className="table-responsive-sm">
         <StyledTable width={"100%"} className="table table-hover">
-
           <thead>
             <tr>
               {columns.map((column, index) => (
@@ -27,9 +26,9 @@ const Table = ({ data,heading }) => {
                   <td
                     key={columnIndex}
                     className={
-                      column === "status" && row[column] === "Ready"
-                        && "pending"
-                        
+                      column === "status" &&
+                      row[column] === "Ready" &&
+                      "pending"
                     }
                   >
                     {row[column]}
@@ -38,7 +37,6 @@ const Table = ({ data,heading }) => {
               </tr>
             ))}
           </tbody>
-          
         </StyledTable>
       </Box>
     </Wrapper>
@@ -51,6 +49,12 @@ const Wrapper = styled.div`
     text-align: left;
     padding: 1rem 0;
   }
+  @media screen and (max-width: 600px) {
+   .heading{
+    font-size: 1rem;
+
+   }
+  }
 `;
 
 const Box = styled.div`
@@ -59,7 +63,8 @@ const Box = styled.div`
 `;
 
 const StyledTable = styled.table`
-  width: 90%;
+  width: 100%;
+  margin-left: 2rem;
   border-collapse: collapse;
   @media screen and (max-width: 600px) {
     max-width: 80%;
@@ -67,10 +72,6 @@ const StyledTable = styled.table`
   }
   .pending {
     color: red;
-  }
-  th {
-    /* background-color: black;
-    color:white; */
   }
 `;
 export default Table;

@@ -93,7 +93,7 @@ const Container = styled.div`
   padding: 0;
   overflow-x: hidden;
   .sidebar {
-    width: 25% !important;
+    width: 20% ;
   }
   .main_sec {
     width: calc(100% - 25%);
@@ -113,13 +113,22 @@ const Container = styled.div`
     display: flex;
     margin: 2rem 1rem;
   }
+  @media screen and (max-width: 600px) {
+    .main_sec {
+      width: 100% !important;
+    }
+    .sidebar{
+      width: 0%;
+      display: none;
+    }
+  }
 `;
 
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 4%;
   margin: 2rem 0 0 2rem;
   .tit {
     display: flex;
@@ -151,7 +160,7 @@ const Wrapper = styled.div`
   .price {
     text-align: left;
     font-size: 1.2rem;
-    margin: 0.4rem .5rem;
+    margin: 0.4rem 0.5rem;
     font-weight: 600;
   }
 `;
@@ -160,13 +169,17 @@ const Box = styled.div`
   background-color: #fcfcfc;
   box-sizing: border-box;
   padding: 10px;
-  width: 11rem;
+  width: 21%;
+  margin-bottom: 2rem;
   cursor: pointer;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
   &:hover {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   }
+  @media screen and (max-width:600px){
+    width: 40%;
+    }
 `;
 
 export default Cards;
